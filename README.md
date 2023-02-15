@@ -9,7 +9,7 @@
 3. Aspettare che installi tutte le dipendenze
 <hr>
 <hr>
-<h1>ISTRUZIONI PER LANCIARE IL PROGRAMMA<h1>
+<h1>ISTRUZIONI PER LANCIARE IL PROGRAMMA</h1>
 <hr>
 1. Lanciare il programma con il comando "python3 PDF_parser.py"
 <hr>
