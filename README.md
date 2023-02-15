@@ -2,18 +2,19 @@
 
 # TO-DO LIST:
 <hr>
-Scrivere file con l' installazione delle dipendenze bash
 <hr>
-<hr>
-# ISTRUZIONI:
+# ISTRUZIONI PER L' INSTALLAZIONE:
 <hr>
 1. Clonare la repository sul desktop
 <hr>
-2. Aprire la cartella e eseguire il file install.sh
+2. Aprire la cartella ed eseguire il comando "bash install.sh"
 <hr>
 3. Aspettare che installi tutte le dipendenze
 <hr>
-4. Lanciare il comando "python3 PDF-Parser.py"
+<hr>
+# ISTRUZIONI PER LANCIARE IL PROGRAMMA
+<hr>
+1. Lanciare il programma con il comando "python3 PDF_parser.py"
 <hr>
 <hr>
 
