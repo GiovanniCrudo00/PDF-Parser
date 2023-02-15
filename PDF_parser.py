@@ -9,7 +9,9 @@ from datetime import datetime
 #
 
 output = subprocess.check_output(['pwd'])
-str_abs = output.decode('utf8', errors='strict').strip()
+str_abs = output.decode('utf8', errors='strict').strip() # Path da concatenare alla cartella delle immagini
+output = subprocess.check_output(['which','wkhtmltopdf'])
+str_wkhtmltopdf = output.decode('utf8', errors='strict').strip() # Path della libreria wkhtmltopdf
 
 #
 # Popolo i campi per la creazione del pdf
@@ -52,6 +54,6 @@ template_env = jinja2.Environment(loader=template_loader)
 html_template = './templates/bollaTemplate.html'
 template = template_env.get_template(html_template)
 output_text = template.render(context)
-config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+config = pdfkit.configuration(wkhtmltopdf=str_wkhtmltopdf)
 output_pdf = './output/PDF_FICO.pdf'
-pdfkit.from_string(output_text, output_pdf, configuration=config, css='./styles/style.css')
+pdfkit.from_string(output_text, output_pdf, configuration=config)
