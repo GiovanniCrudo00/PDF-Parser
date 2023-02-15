@@ -4,10 +4,17 @@
 <hr>
 Scrivere file con l' installazione delle dipendenze bash
 <hr>
+<hr>
 # ISTRUZIONI:
-# 1. Clonare la repository sul desktop
-# 2. Aprire la cartella e eseguire il file install.sh
-# 3. Aspettare che installi tutte le dipendenze
-# 4. Lanciare il comando python3 PDF-Parser.py
+<hr>
+1. Clonare la repository sul desktop
+<hr>
+2. Aprire la cartella e eseguire il file install.sh
+<hr>
+3. Aspettare che installi tutte le dipendenze
+<hr>
+4. Lanciare il comando python3 PDF-Parser.py
+<hr>
+<hr>
 
 
