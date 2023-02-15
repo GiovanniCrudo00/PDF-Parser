@@ -1,6 +1,6 @@
 # PDF-Parser
 
-TO-DO LIST:
+# TO-DO LIST:
 <hr>
 Spezzare a Funzioni
 <hr>
