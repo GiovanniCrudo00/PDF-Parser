@@ -1,8 +1,5 @@
 # PDF-Parser
 
-# TO-DO LIST:
-<hr>
-<hr>
 # ISTRUZIONI PER L' INSTALLAZIONE:
 <hr>
 1. Clonare la repository sul desktop
