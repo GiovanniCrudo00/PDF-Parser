@@ -4,8 +4,6 @@
 <hr>
 Scrivere file con l' installazione delle dipendenze bash
 <hr>
-Allineare i div a sinistra
-<hr>
 <hr>
 # ISTRUZIONI:
 <hr>
