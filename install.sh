@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 echo "##################################"
 echo "#    Installazione Dipendenze    #"
 echo "##################################"
