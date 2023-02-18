@@ -4,7 +4,7 @@
 <hr>
 1. Clonare la repository sul desktop
 <hr>
-2. Aprire la cartella ed eseguire il comando "bash install.sh"
+2. Aprire la cartella ed eseguire il comando "sudo bash install.sh"
 <hr>
 3. Aspettare che installi tutte le dipendenze
 <hr>
