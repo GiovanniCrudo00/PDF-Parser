@@ -56,4 +56,5 @@ template = template_env.get_template(html_template)
 output_text = template.render(context)
 config = pdfkit.configuration(wkhtmltopdf=str_wkhtmltopdf)
 output_pdf = './output/PDF_FICO.pdf'
-pdfkit.from_string(output_text, output_pdf, configuration=config)
+options={"enable-local-file-access": ""}
+pdfkit.from_string(output_text, output_pdf, configuration=config, options=options)

@@ -3,21 +3,23 @@ echo "##################################"
 echo "#    Installazione Dipendenze    #"
 echo "##################################"
 
-sudo apt-get update
+apt-get update
 
-sudo apt install software-properties-common
+apt install software-properties-common
 
-sudo add-apt-repository ppa:deadsnakes/ppa
+add-apt-repository ppa:deadsnakes/ppa
 
-sudo apt install python3.8
+apt install python3.8
 
-sudo apt-get update
+apt-get update
+
+pip install --upgrade pip
 
 pip install jinja2
 
 pip install pdfkit
 
-sudo apt-get install wkhtmltopdf
+apt-get install wkhtmltopdf
 
 echo "### Path di which wkhtmltopdf###"
 which wkhtmltopdf
