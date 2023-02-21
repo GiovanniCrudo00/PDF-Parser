@@ -57,13 +57,13 @@ if(azienda == "DFG"):
                 'numero_colli':numero_colli, 'peso':peso, 'data': today_date, 
                 'annotazioni':annotazioni, 'DDT':ddt}
 
-        template_loader = jinja2.FileSystemLoader('./')
+        template_loader = jinja2.FileSystemLoader('/')
         template_env = jinja2.Environment(loader=template_loader)
-        html_template = './templates/'+azienda+'Template.html'
+        html_template = str_abs+'/templates/'+azienda+'Template.html'
         template = template_env.get_template(html_template)
         output_text = template.render(context)
         config = pdfkit.configuration(wkhtmltopdf=str_wkhtmltopdf)
-        output_pdf = './output/'+str(data_nome_pdf)+'_'+str(doc_id)+'.pdf'
+        output_pdf = str_abs+'/output/'+str(data_nome_pdf)+'_'+str(doc_id)+'.pdf'
         options={"enable-local-file-access": ""}
         pdfkit.from_string(output_text, output_pdf, configuration=config, options=options)
         doc_id+=1

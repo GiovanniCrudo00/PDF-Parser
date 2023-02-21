@@ -1,0 +1,17 @@
+Instruzioni per schedulare la produzione dei PDF:
+
+Apriamo l' editor dei crontab:
+
+    crontab -e 
+
+Inseriamo questa riga:
+
+    0 2 * * * $pathAssolutoAllaCartellaDoveSiTrovaIlParser python3 PDF_parser.py
+
+Verifichiamo che funzioni tutto
+
+In questo modo si schedula un crontab alle 02:00 di ogni giorno
+
+Per verificare la correttezza del crontab:
+    https://crontab.guru/
+
