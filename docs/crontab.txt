@@ -1,5 +1,9 @@
 Instruzioni per schedulare la produzione dei PDF:
 
+Prima verifichiamo il path assoluto di dove si trova il parser 
+
+    pwd 
+
 Apriamo l' editor dei crontab:
 
     crontab -e 
