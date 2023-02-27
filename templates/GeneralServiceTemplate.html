@@ -55,9 +55,15 @@
                 <table class="table table-borderless">
                     <thead>
                     <tr>
+
+                        <th scope="col" style="border: 1px solid black;">
+                            Trasporto a Mezzo: <a style="font-weight: lighter;"> {{trasporto_a_mezzo}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Causale di Trasporto: <a style="font-weight: lighter;"> {{causale}}</a>
+                        </th>
                         <th scope="col" style="border: 1px solid black;">
                             Contrassegno: <a style="font-weight: lighter;">&euro; {{contrassegno}}</a>
-                            <br>
                         </th>
                     </tr>
                     </thead>
@@ -67,6 +73,24 @@
                 <table class="table table-borderless">
                     <thead>
                     <tr>
+
+                        <th scope="col" style="border: 1px solid black;">
+                            Vettore: <a style="font-weight: lighter;"> {{vettore}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Aspetto Beni: <a style="font-weight: lighter;"> {{aspetto_beni}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="border: 1px solid black;">
+                            Inizio Trasporto: <a style="font-weight: lighter;">{{data_inizio_trasporto}}</a>
+                        </th>
                         <th scope="col" style="border: 1px solid black;">
                             Numero Colli: <a style="font-weight: lighter;">{{numero_colli}}</a>
                         </th>
@@ -105,6 +129,11 @@
                             <br>
                         </th>
                         <th scope="col" style="border: 1px solid black;">
+                            Firma Vettore
+                            <br>
+                            <br>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
                             Firma Destinatario
                             <br>
                             <br>
@@ -118,9 +147,149 @@
                 al D.Lgs 196/2003 esclusivamente per gli adempimenti amministrativi e fiscali.
             </p>
         </div>
-        <br><br><br>
+        <br>
         <a style="font-weight: bold;">-----------------------------------------------------------------------------------TAGLIA QUI--------------------------------------------------------------------------------------</a>
-        
+        <div class="container">
+            <div class="row">
+              <div class="col-sm" style="text-align: left;"> <img style="height: 120px;" src={{logo}}></div>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        
+                        <th scope="col" style="border: 1px solid black;">Data: <a style="font-weight: lighter;">{{data}}</a></th>
+                        <th scope="col"></th>
+                        <th scope="col" style="border: 1px solid black;">Lettera di Vettura: <a style="font-weight: lighter;">{{lettera_di_vettura}}</a></th>
+                        
+                    </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="border: 1px solid black;">
+                            Mittente
+                            <br>
+                            Nome: <a style="font-weight: lighter;">{{mittente_nome}}</a>
+                            <br>
+                            Via: <a style="font-weight: lighter;">{{mittente_via}}</a>
+                            <br>
+                            Luogo: <a style="font-weight: lighter;">{{mittente_luogo}}</a>
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Destinatario
+                            <br>
+                            Nome: <a style="font-weight: lighter;">{{destinatario_nome}}</a>
+                            <br>
+                            Via: <a style="font-weight: lighter;">{{destinatario_via}}</a>
+                            <br>
+                            Luogo: <a style="font-weight: lighter;">{{destinatario_luogo}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+
+                        <th scope="col" style="border: 1px solid black;">
+                            Trasporto a Mezzo: <a style="font-weight: lighter;"> {{trasporto_a_mezzo}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Causale di Trasporto: <a style="font-weight: lighter;"> {{causale}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Contrassegno: <a style="font-weight: lighter;">&euro; {{contrassegno}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+
+                        <th scope="col" style="border: 1px solid black;">
+                            Vettore: <a style="font-weight: lighter;"> {{vettore}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Aspetto Beni: <a style="font-weight: lighter;"> {{aspetto_beni}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="border: 1px solid black;">
+                            Inizio Trasporto: <a style="font-weight: lighter;">{{data_inizio_trasporto}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Numero Colli: <a style="font-weight: lighter;">{{numero_colli}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Peso: <a style="font-weight: lighter;">{{peso}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="border: 1px solid black;">
+                            Numero DTT di riferimento:
+                            <br>
+                            <a style="font-weight: lighter;">{{DDT}}</a>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Annotazioni:
+                            <br>
+                            <a style="font-weight: lighter;">{{annotazioni}}</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-borderless">
+                    <thead>
+                    <tr>
+                        <th scope="col" style="border: 1px solid black;">
+                            Firma Conducente
+                            <br>
+                            <br>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Firma Vettore
+                            <br>
+                            <br>
+                        </th>
+                        <th scope="col" style="border: 1px solid black;">
+                            Firma Destinatario
+                            <br>
+                            <br>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <p style="font-size: small;">
+                I dati personali relativi al cliente saranno trattati in base
+                al D.Lgs 196/2003 esclusivamente per gli adempimenti amministrativi e fiscali.
+            </p>
+        </div>
 
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
