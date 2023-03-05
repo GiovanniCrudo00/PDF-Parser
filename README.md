@@ -11,7 +11,7 @@
 <hr>
 <h1>ISTRUZIONI PER LANCIARE IL PROGRAMMA</h1>
 <hr>
-1. Lanciare il programma con il comando "python3 PDF_parser.py"
+1. Lanciare il programma con il comando "python3 nomedelparser.py"
 <hr>
 <hr>
 
