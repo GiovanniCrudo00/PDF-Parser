@@ -38,7 +38,6 @@ bordero_template = str_abs+'/templates/bordero.html'
 lista_delle_spedizioni=read_from_db() 
 
 # Inizializzo il file html del borderò
-
 newHtmlFile = open('templates/bordero.html', 'w')
 newHtmlFile.write("""<!doctype html>\n""")
 newHtmlFile.write("""<html lang="en">\n""")
@@ -63,6 +62,20 @@ newHtmlFile.write("""\t\t\t\t\t</tr>\n""")
 newHtmlFile.write("""\t\t\t\t\t</thead>\n""")
 newHtmlFile.write("""\t\t\t\t</table>\n""")
 newHtmlFile.write("""\t\t\t</div>\n""")
+newHtmlFile.write("""\t\t\t<div class="row">\n""")
+newHtmlFile.write("""\t\t\t\t<table class="table table-borderless">\n""")
+newHtmlFile.write("""\t\t\t\t\t<thead>\n""")
+newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Mittente</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Destinatario</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Via Destinatario</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Luogo</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Colli</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Peso</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Contrassegno</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t</tr>\n""")
+newHtmlFile.write("""\t\t\t\t\t</thead>\n""")
+newHtmlFile.write("""\t\t\t\t\t<tbody>\n""")
 newHtmlFile.close()
 
 # Inizializzo il dictionary di contesto del borderò
@@ -111,21 +124,15 @@ for i in lista_delle_spedizioni:
 
     # Appendo all' HTML il placeholder
     newHtmlFile = open('templates/bordero.html', 'a')
-    newHtmlFile.write("""\t\t\t<div class="row">\n""")
-    newHtmlFile.write("""\t\t\t\t<table class="table table-borderless">\n""")
-    newHtmlFile.write("""\t\t\t\t\t<tbody>\n""")
     newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black; font-weight: lighter;'>{{mitt_"""+str(doc_id)+"""}}</th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{dest_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{viadest_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{luogo_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{colli_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{peso_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{contrassegno_"""+str(doc_id)+"""}}</a></th>\n""")
-    newHtmlFile.write("""\t\t\t\t\t</tr>\n""")
-    newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
-    newHtmlFile.write("""\t\t\t\t</table>\n""")
-    newHtmlFile.write("""\t\t\t</div>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{mitt_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{dest_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{viadest_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{luogo_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{colli_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{peso_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{contrassegno_"""+str(doc_id)+"""}}</a></td>\n""")
+    newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
     newHtmlFile.close()
 
     context = {'logo':logo,'lettera_di_vettura': lettera_di_vettura, 'mittente_nome': mittente_nome, 
@@ -149,6 +156,8 @@ for i in lista_delle_spedizioni:
 
 # Ultimi rtag di chiusura dell'html
 newHtmlFile = open('templates/bordero.html', 'a')
+newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
+newHtmlFile.write("""\t\t\t\t</table>\n""")
 newHtmlFile.write("""\t\t</div>\n""")
 newHtmlFile.write("""\n\t</body>\n""")
 newHtmlFile.write("""</html>""")

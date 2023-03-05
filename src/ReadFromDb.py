@@ -21,7 +21,6 @@ lstt.append(['2112313','DFG Servizi SRL','Via Corace 27', 'Catanzaro, 88100','LO
 lstt.append(['900','DFG Servizi SRL','Via Corace 27', 'Catanzaro, 88100','Talmone Gift S.R.L','Via Jannelli, 15','Catanzaro 88100','470','Manca pacchetto','5','50','9981','27/10/2022','Pippo Calò'])
 lstt.append(['6616','DFG Servizi SRL','Via Corace 27','Catanzaro, 88100','Talmone Gift S.R.L','Via Jannelli, 15','Catanzaro 88100','470','Pacchetto trovato','1','100','881','27/10/2022','Pippo Calò'])
 lstt.append(['7789','DFG Servizi SRL','Via Corace 27','Catanzaro 88100','Coop SPA','Via Barone, 159','Catanzaro 88100','4500','-','10','110','34','27/10/2022','Pippo Calò'])
-
 #
 # Far ritornare la lista dopo averla presa dal DB
 #
