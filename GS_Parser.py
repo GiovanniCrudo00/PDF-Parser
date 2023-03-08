@@ -3,7 +3,9 @@ import jinja2
 import pdfkit
 from datetime import datetime
 from src.ReadFromDb import read_from_db, numero_spedizioni
+import time, math
 
+start = time.time()
 
 #
 # Prevelo il path assoluto della macchina
@@ -30,7 +32,7 @@ logo=str_abs+"/images/GeneralService_logo_intestato.jpeg"
 html_template = str_abs+'/templates/GeneralServiceTemplate.html'
 bordero_template = str_abs+'/templates/bordero.html'
 
-#
+
 # Prelevo da DB le spedizioni
 #
 # In questa sezione mi aspetto che i dati mi vengano forniti nel seguente modo:
@@ -88,7 +90,8 @@ newHtmlFile.close()
 context_bord = {}
 nome_corriere = ""
 doc_id, somma_contrassegni, somma_peso, somma_colli, somma_spedizioni = 0, 0, 0, 0, 0
-
+page_counter = 0
+is_first_page = True
 
 #
 # Genero un PDF per ogni spedizione
@@ -134,6 +137,53 @@ for i in lista_delle_spedizioni:
     somma_peso +=int(peso)
     somma_colli +=int(numero_colli)
 
+    # Gestisco la creazione di una nuova pagina se la prima è già piena
+    if(is_first_page and page_counter % 25 == 0 and page_counter != 0):
+        newHtmlFile = open('templates/bordero.html', 'a')
+        newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
+        newHtmlFile.write("""\t\t\t\t</table>\n""")
+        newHtmlFile.write("""\t\t\t</div>\n""")
+        newHtmlFile.write("""\t\t\t<br><br><br><br><br><br><br>\n""")
+        newHtmlFile.write("""\t\t\t<div class="row">\n""")
+        newHtmlFile.write("""\t\t\t\t<table class="table table-borderless">\n""")
+        newHtmlFile.write("""\t\t\t\t\t<thead>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Mittente</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Destinatario</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Via Destinatario</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Luogo</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Colli</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Peso</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Contrassegno</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t</tr>\n""")
+        newHtmlFile.write("""\t\t\t\t\t</thead>\n""")
+        newHtmlFile.write("""\t\t\t\t\t<tbody>\n""")
+        page_counter = 0
+        is_first_page = False
+
+    # Gestisco la creazione di una nuova pagina se non siamo dopo la prima pagina
+    if((not is_first_page) and page_counter % 30 == 0 and page_counter != 0):
+        newHtmlFile = open('templates/bordero.html', 'a')
+        newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
+        newHtmlFile.write("""\t\t\t\t</table>\n""")
+        newHtmlFile.write("""\t\t\t</div>\n""")
+        newHtmlFile.write("""\t\t\t<br><br><br><br><br>\n""")
+        newHtmlFile.write("""\t\t\t<div class="row">\n""")
+        newHtmlFile.write("""\t\t\t\t<table class="table table-borderless">\n""")
+        newHtmlFile.write("""\t\t\t\t\t<thead>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Mittente</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Destinatario</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Via Destinatario</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Luogo</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Colli</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Peso</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Contrassegno</th>\n""")
+        newHtmlFile.write("""\t\t\t\t\t\t</tr>\n""")
+        newHtmlFile.write("""\t\t\t\t\t</thead>\n""")
+        newHtmlFile.write("""\t\t\t\t\t<tbody>\n""")
+        page_counter+=1
+
     # Appendo all' HTML il placeholder
     newHtmlFile = open('templates/bordero.html', 'a')
     newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
@@ -166,34 +216,35 @@ for i in lista_delle_spedizioni:
     options={"enable-local-file-access": ""}
     pdfkit.from_string(output_text, output_pdf, configuration=config, options=options)
     doc_id+=1
+    page_counter+=1
 
 # Ultimi tag di chiusura dell'html
 newHtmlFile = open('templates/bordero.html', 'a')
 newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
 newHtmlFile.write("""\t\t\t\t</table>\n""")
 newHtmlFile.write("""\t\t\t</div>\n""")
-newHtmlFile.write("""\t\t\t<div class="row">\n""")
-newHtmlFile.write("""\t\t\t\t<table class="table table-borderless">\n""")
-newHtmlFile.write("""\t\t\t\t\t<thead>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Spedizioni</th>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Colli</th>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Peso</th>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Contrassegni</th>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Consegne</th>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t</tr>\n""")
-newHtmlFile.write("""\t\t\t\t\t</thead>\n""")
-newHtmlFile.write("""\t\t\t\t\t<tbody>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_spedizioni}}</a></td>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_colli}}</a></td>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_peso}}</a></td>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_contrassegni}}</a></td>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{numero_sped}}</a></td>\n""")
-newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
-newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
-newHtmlFile.write("""\t\t\t\t</table>\n""")
-newHtmlFile.write("""\t\t\t</div>\n""")
+newHtmlFile.write("""\t\t</div>\n""")
+newHtmlFile.write("""\t\t<div class="container-fluid">\n""")
+newHtmlFile.write("""\t\t\t<table class="table table-borderless">\n""")
+newHtmlFile.write("""\t\t\t\t<thead>\n""")
+newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Spedizioni</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Colli</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Peso</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Contrassegni</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<th scope='col' style='border: 1px solid black;'>Totale Consegne</th>\n""")
+newHtmlFile.write("""\t\t\t\t\t</tr>\n""")
+newHtmlFile.write("""\t\t\t\t</thead>\n""")
+newHtmlFile.write("""\t\t\t\t<tbody>\n""")
+newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_spedizioni}}</a></td>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_colli}}</a></td>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_peso}}</a></td>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{somma_contrassegni}}</a></td>\n""")
+newHtmlFile.write("""\t\t\t\t\t\t<td scope='col' style='border: 1px solid black;'><a style='font-weight: lighter;'>{{numero_sped}}</a></td>\n""")
+newHtmlFile.write("""\t\t\t\t\t<tr>\n""")
+newHtmlFile.write("""\t\t\t\t</tbody>\n""")
+newHtmlFile.write("""\t\t\t</table>\n""")
 newHtmlFile.write("""\t\t</div>\n""")
 newHtmlFile.write("""\t</body>\n""")
 newHtmlFile.write("""</html>""")
@@ -216,3 +267,19 @@ config = pdfkit.configuration(wkhtmltopdf=str_wkhtmltopdf)
 output_pdf = str_abs+'/output/'+'borderò_'+str(nome_corriere)+'_'+str(data_nome_pdf)+'.pdf'
 options={"enable-local-file-access": ""}
 pdfkit.from_string(output_text, output_pdf, configuration=config, options=options)
+
+
+
+
+
+
+
+
+
+
+
+
+
+end = time.time()
+elapsed = end-start
+print("BOLLE GENERATE, TEMPO TRASCORSO: "+str(math.ceil(elapsed))+" SECONDI")
