@@ -124,13 +124,13 @@ for i in lista_delle_spedizioni:
         context_bord['logo'] = logo
 
     # Aggiungo al dictionary del context del borderò i campi necessari
-    context_bord['mitt_'+str(doc_id)] = mittente_nome
-    context_bord['dest_'+str(doc_id)] = destinatario_nome
-    context_bord['viadest_'+str(doc_id)] = destinatario_via
-    context_bord['luogo_'+str(doc_id)] = destinatario_luogo
-    context_bord['colli_'+str(doc_id)] = numero_colli
-    context_bord['peso_'+str(doc_id)] = peso
-    context_bord['contrassegno_'+str(doc_id)] = contrassegno
+    context_bord['mitt_'+str(doc_id)] = mittente_nome.strip()
+    context_bord['dest_'+str(doc_id)] = destinatario_nome.strip()
+    context_bord['viadest_'+str(doc_id)] = destinatario_via.strip()
+    context_bord['luogo_'+str(doc_id)] = destinatario_luogo.strip()
+    context_bord['colli_'+str(doc_id)] = numero_colli.strip()
+    context_bord['peso_'+str(doc_id)] = peso.strip()
+    context_bord['contrassegno_'+str(doc_id)] = contrassegno.strip()
 
     somma_contrassegni+=int(contrassegno)
     somma_spedizioni+=1
@@ -161,7 +161,8 @@ for i in lista_delle_spedizioni:
         page_counter = 0
         is_first_page = False
 
-    # Gestisco la creazione di una nuova pagina se non siamo dopo la prima pagina
+    # Gestisco la creazione di una nuova pagina se non siamo dopo la prima 
+    #  pagina ma dopo una pagina generica
     if((not is_first_page) and page_counter % 30 == 0 and page_counter != 0):
         newHtmlFile = open('templates/bordero.html', 'a')
         newHtmlFile.write("""\t\t\t\t\t</tbody>\n""")
@@ -197,7 +198,7 @@ for i in lista_delle_spedizioni:
     newHtmlFile.write("""\t\t\t\t\t\t<tr>\n""")
     newHtmlFile.close()
 
-    # Genero il contesto passando il dictionary delle variabili dell'HTML
+    # Genero il contesto passando il dictionary delle variabili dell'HTML delle bolle
     context = {'logo':logo,'lettera_di_vettura': lettera_di_vettura, 'mittente_nome': mittente_nome, 
                 'mittente_via': mittente_via, 'mittente_luogo': mittente_luogo,
                 'destinatario_nome':destinatario_nome,'destinatario_via':destinatario_via,
